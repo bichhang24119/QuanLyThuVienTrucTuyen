@@ -3,7 +3,7 @@ using System.Security.Principal;
 
 namespace QuanLyThuVien.Data
 {
-    public class User : IdentityUser
+    public class ApplicationUser : IdentityUser
     {
         //public string FullName { get; set; } = null!;
     }

@@ -3,12 +3,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace QuanLyThuVien.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<ApplicationUser>
     {
-        public DataContext(DbContextOptions<DataContext> otp) : base(otp) 
-        { 
+        public DataContext(DbContextOptions<DataContext> opt) : base(opt)
+        {
         }
 
+        #region DbSet
         public DbSet<Document>? Documents { get; set; }
+        #endregion 
     }
 }

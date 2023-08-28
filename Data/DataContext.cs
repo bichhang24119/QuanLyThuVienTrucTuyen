@@ -11,6 +11,10 @@ namespace QuanLyThuVien.Data
 
         #region DbSet
         public DbSet<Document>? Documents { get; set; }
+        public DbSet<Teacher>? Teachers { get; set; }
+        public DbSet<Student>? Students { get; set; }
+        public DbSet<PrivateFile>? PrivateFiles { get; set; }
+        public DbSet<ExamBank>? ExamBanks { get; set; }
         #endregion 
     }
 }

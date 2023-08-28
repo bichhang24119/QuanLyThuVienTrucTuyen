@@ -24,6 +24,10 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<ITeacherRepository, TeacherReposotory>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IPrivateFileRepository, PrivateFileRepository>();
+builder.Services.AddScoped<IExamBankRepository, ExamBankRepository>();
 
 builder.Services.AddDbContext<DataContext>(options =>
 {

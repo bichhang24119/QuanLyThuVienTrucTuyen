@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using QuanLyThuVien.Data;
 using QuanLyThuVien.Repositories;
@@ -17,6 +18,7 @@ namespace QuanLyThuVien.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAllPrivateFiles()
         {
             try
@@ -30,6 +32,7 @@ namespace QuanLyThuVien.Controllers
         }
 
         [HttpGet("{Id}")]
+        [Authorize]
         public async Task<IActionResult> GetPrivateFilesById(int id)
         {
             var privatefile = await _privatefileRepo.GetPrivateFileByIdAsync(id);
@@ -37,6 +40,7 @@ namespace QuanLyThuVien.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddNewPrivateFiles(PrivateFile privatefile)
         {
             try
@@ -52,6 +56,7 @@ namespace QuanLyThuVien.Controllers
         }
 
         [HttpPut("{Id}")]
+        [Authorize]
         public async Task<IActionResult> UpdatePrivateFiles(int Id, PrivateFile privatefile)
         {
             await _privatefileRepo.UpdatePrivateFileByIdAsync(Id, privatefile);
@@ -59,6 +64,7 @@ namespace QuanLyThuVien.Controllers
         }
 
         [HttpDelete("{Id}")]
+        [Authorize]
         public async Task<IActionResult> DeletePrivateFiles(int Id)
         {
             await _privatefileRepo.DeletePrivateFileAsync(Id);

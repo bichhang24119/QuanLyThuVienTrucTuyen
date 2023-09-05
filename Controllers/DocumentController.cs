@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using QuanLyThuVien.Data;
 using QuanLyThuVien.Repositories;
@@ -17,6 +18,7 @@ namespace QuanLyThuVien.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAllDocuments()
         {
             try
@@ -30,6 +32,7 @@ namespace QuanLyThuVien.Controllers
         }
 
         [HttpGet("{Id}")]
+        [Authorize]
         public async Task<IActionResult> GetDocumentById( int id)
         {
             var document = await _documentRepo.GetDocumentByIdAsync(id);
@@ -44,6 +47,7 @@ namespace QuanLyThuVien.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddNewDocument(Document document)
         {
             try
@@ -59,6 +63,7 @@ namespace QuanLyThuVien.Controllers
         }
 
         [HttpPut("{Id}")]
+        [Authorize]
         public async Task<IActionResult> UpdateDocument(int Id, Document document)
         {
             await _documentRepo.UpdateDocumentByIdAsync(Id, document);
@@ -66,6 +71,7 @@ namespace QuanLyThuVien.Controllers
         }
 
         [HttpDelete("{Id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteDocument(int Id)
         {
             await _documentRepo.DeleteDocumentAsync(Id);

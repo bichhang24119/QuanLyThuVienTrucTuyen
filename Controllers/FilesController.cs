@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
 
@@ -11,6 +12,7 @@ namespace FileUploadDownload.Controllers
 
         [HttpPost]
         [Route("UploadFile")]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UploadFile(IFormFile file, CancellationToken cancellationtoken)
@@ -49,6 +51,7 @@ namespace FileUploadDownload.Controllers
 
 
         [HttpGet]
+        [Authorize]
         [Route("DownloadFile")]
         public async Task<IActionResult> DownloadFile(string filename)
         {

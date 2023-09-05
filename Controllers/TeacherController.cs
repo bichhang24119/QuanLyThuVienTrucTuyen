@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using QuanLyThuVien.Data;
 using QuanLyThuVien.Repositories;
@@ -17,6 +18,7 @@ namespace QuanLyThuVien.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAllTeachers()
         {
             try
@@ -30,6 +32,7 @@ namespace QuanLyThuVien.Controllers
         }
 
         [HttpGet("{Id}")]
+        [Authorize]
         public async Task<IActionResult> GetTeachersById(int id)
         {
             var teacher = await _teacherRepo.GetTeacherByIdAsync(id);
@@ -37,6 +40,7 @@ namespace QuanLyThuVien.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddNewTeachers(Teacher teacher)
         {
             try
@@ -52,6 +56,7 @@ namespace QuanLyThuVien.Controllers
         }
 
         [HttpPut("{Id}")]
+        [Authorize]
         public async Task<IActionResult> UpdateTeachers(int Id, Teacher teacher)
         {
             await _teacherRepo.UpdateTeacherByIdAsync(Id, teacher);
@@ -59,6 +64,7 @@ namespace QuanLyThuVien.Controllers
         }
 
         [HttpDelete("{Id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteTeachers(int Id)
         {
             await _teacherRepo.DeleteTeacherAsync(Id);
